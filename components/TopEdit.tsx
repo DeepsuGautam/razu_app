@@ -45,6 +45,7 @@ const TopEdit = async () => {
             name="title"
             id="title"
             defaultValue={data?.[0]?.title}
+            placeholder="Enter Title"
           />
 
           <textarea
@@ -53,6 +54,7 @@ const TopEdit = async () => {
             className="text-[2rem] font-bold max-w-[60rem] h-[20rem] bg-transparent focus:outline-none resize-none"
             required
             defaultValue={data?.[0]?.paragraph}
+            placeholder="Enter Paragraph"
           />
           <button className="w-fit py-[1rem] border-2 rounded-xl px-[3rem] bg-transparent text-[2rem] font-medium text-white transition-all duration-300 hover:bg-white hover:text-slate-700">
             SUBMIT CHANGES
