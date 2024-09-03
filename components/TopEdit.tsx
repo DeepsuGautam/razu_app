@@ -26,17 +26,10 @@ const TopEdit = async () => {
         >
           <input
             type="text"
-            id="_id"
-            name="_id"
-            className="hidden"
-            defaultValue={data?.[0]?._id?.toString()}
-          />
-          <input
-            type="text"
             id="relation"
             name="relation"
             className="hidden"
-            defaultValue={data?.[0]?.relation}
+            defaultValue="topSection"
           />
           <input
             type="text"

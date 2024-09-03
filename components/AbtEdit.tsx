@@ -9,8 +9,7 @@ type dataType = {
   _id: any;
   title: string;
   subtitle: string;
-  paragraph: string;
-  relation: string;
+  paragraph:string;
 };
 
 const AbtEdit = async () => {
@@ -30,17 +29,10 @@ const AbtEdit = async () => {
       >
       <input
         type="text"
-        id="_id"
-        name="_id"
-        className="hidden"
-        defaultValue={data?._id?.toString()}
-      />
-      <input
-        type="text"
         id="relation"
         name="relation"
         className="hidden"
-        defaultValue={data?.relation}
+        defaultValue="aboutSection"
       />
         <input
           id="title"
