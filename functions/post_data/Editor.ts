@@ -2,9 +2,10 @@
 
 import sections from "@/models/sections";
 import { revalidatePath } from "next/cache";
+import ConnectDB from "../connection/ConnectDB";
 
 export const replaceData = async (data: FormData) => {
-  try {
+  try {await ConnectDB()
     const obj = {
       title: data?.get("title"),
       subtitle: data?.get("subtitle") || '',
@@ -29,7 +30,7 @@ export const replaceData = async (data: FormData) => {
 };
 
 export const addData = async (model: any, data: string) => {
-  try {
+  try {await ConnectDB()
     const parsed: any = JSON.parse(data);
     const newData = new model(parsed);
     await newData.save();
@@ -41,7 +42,7 @@ export const addData = async (model: any, data: string) => {
 
 export const editData = async(model:any, data:string)=>{
 
-   try{
+   try{await ConnectDB()
     const parsed:any = JSON.parse(data)
     const _id :string = parsed?._id;
     const newData = await model.findOne({_id})
@@ -55,7 +56,7 @@ export const editData = async(model:any, data:string)=>{
 }
 
 export const deleteData = async (model: any, _id: string) => {
-  try {
+  try {await ConnectDB()
     await model.findOneAndDelete({ _id });
     revalidatePath("/dashboard");
   } catch (error: any) {

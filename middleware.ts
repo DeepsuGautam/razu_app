@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 const domain: string = process.env.DOMAIN || "http://182.93.94.210:3002";
+console.log(domain)
 
 const middleware = async (req: NextRequest) => {
   const url: string = req?.url;

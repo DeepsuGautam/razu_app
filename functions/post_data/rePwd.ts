@@ -2,10 +2,11 @@
 
 import users from "@/models/users";
 import { hash } from "bcryptjs";
+import ConnectDB from "../connection/ConnectDB";
 
 
 export const rePwd = async (data: string) => {
-  try {
+  try {await ConnectDB()
     const admin = await users.findOne({ role: "admin" });
     const pass:string = await hash(data, 10)
     admin.password = pass

@@ -1,5 +1,6 @@
 "use server";
 import { createTransport } from "nodemailer";
+import ConnectDB from "../connection/ConnectDB";
 
 const transport = createTransport({
   host: "smtp.gmail.com",
@@ -20,6 +21,7 @@ interface dType {
 
 const Contact = async (data: string) => {
   try {
+    await ConnectDB()
     const contactData: dType = JSON.parse(data);
     const { name, email, phone, message } = contactData;
     await transport.sendMail({

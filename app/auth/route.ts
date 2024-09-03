@@ -1,13 +1,16 @@
+"use server"
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { sign, verify } from "jsonwebtoken";
 import users from "@/models/users";
 import { compare } from "bcryptjs";
+import ConnectDB from "@/functions/connection/ConnectDB";
 
 const key: string = process.env.KEY || "";
 
 export const GET = async () => {
   try {
+    await ConnectDB()
     const auth: string = headers().get("auth") || "";
     const token: string = auth.split(" ")[1];
     const verified: any = verify(token, key);
@@ -30,6 +33,7 @@ interface dataType {
 
 export const POST = async (req: NextRequest) => {
   try {
+    await ConnectDB()
     const data: dataType = await req.json();
     const { email, password } = data;
 
